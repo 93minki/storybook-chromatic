@@ -16,3 +16,10 @@ export const Primary: Story = {
     content: "Hello",
   },
 };
+
+Primary.parameters = {
+  design: {
+    type: "figma",
+    url: "https://www.figma.com/file/s9qLEDU0Opmt2qgOfcbLLL/Get-Storybook!?type=design&node-id=0-1&t=MqBcFfVe3CPg59oX-0",
+  },
+};
