@@ -4,7 +4,7 @@ interface TestButtonProps {
 
 const TestButton = ({ content }: TestButtonProps) => {
   return (
-    <div style={{ backgroundColor: "blue" }}>
+    <div style={{ backgroundColor: "green" }}>
       <button>{content}</button>
     </div>
   );
