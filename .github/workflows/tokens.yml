@@ -1,0 +1,35 @@
+name: Create PR from design to main
+
+on:
+  push:
+    branches:
+      - design
+    paths:
+      - "tokens.json"
+
+jobs:
+  createPullRequest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Run Token Transformer
+        run: |
+          npx token-transformer tokens.json ./src/core.json core
+          npx token-transformer tokens.json ./src/light.json light
+          npx token-transformer tokens.json ./src/dark.json dark
+          npx token-transformer tokens.json ./src/theme.json theme
+          npx token-transformer tokens.json ./src/meta.json $metadata
+          git config --global user.name "93minki"
+          git config --global user.email "alsrl0023@naver.com"
+          git add .
+          git commit -m "Figma Design File Changed"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      - name: Create Pull Request
+        run: gh pr create -B main -H design --title 'Design Token Updated' --body 'Pull request body'
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
