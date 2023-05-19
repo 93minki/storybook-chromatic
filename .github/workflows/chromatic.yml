@@ -11,21 +11,21 @@ jobs:
     runs-on: ubuntu-latest
     # Job steps
     steps:
-      - uses: actions/checkout@v2  # Update to the latest version of checkout action
+      - uses: actions/checkout@v2 # Update to the latest version of checkout action
       - name: Setup Node.js
-        uses: actions/setup-node@v2  # Example of using a different action
+        uses: actions/setup-node@v2 # Example of using a different action
         with:
           node-version: 14
+      - name: Cache Dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - run: yarn
-        # Enable caching to speed up subsequent runs
-        - uses: actions/cache@v2
-          with:
-            path: ~/.npm
-            key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
-            restore-keys: |
-              ${{ runner.os }}-node-
       - name: Run Chromatic
-        uses: chromaui/action@v2  # Update to the latest version of Chromatic action
+        uses: chromaui/action@v2 # Update to the latest version of Chromatic action
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
