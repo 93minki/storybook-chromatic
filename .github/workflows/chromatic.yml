@@ -12,6 +12,8 @@ jobs:
     # Job steps
     steps:
       - uses: actions/checkout@v2 # Update to the latest version of checkout action
+        with:
+          fetch-depth: 0
       - name: Setup Node.js
         uses: actions/setup-node@v2 # Example of using a different action
         with:
