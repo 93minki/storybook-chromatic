@@ -5,12 +5,12 @@ interface TestButtonProps {
 }
 
 const StyledButton = styled.div`
-  background-color: ${o2design.colors.indigo[300]};
+  background-color: ${o2design.colors.pink[100].value};
 `;
 
 const TestButton = ({ content }: TestButtonProps) => {
   return (
-    <StyledButton style={{ backgroundColor: "green" }}>
+    <StyledButton>
       <button>{content}</button>
     </StyledButton>
   );
