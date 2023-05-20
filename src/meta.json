@@ -755,6 +755,11 @@
     "type": "borderRadius",
     "description": "tttt"
   },
+  "newsize": {
+    "value": 16,
+    "type": "sizing",
+    "description": "new size "
+  },
   "tokenSetOrder": {
     "0": {
       "value": "core",
