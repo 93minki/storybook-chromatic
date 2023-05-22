@@ -464,6 +464,10 @@
       "value": "#FADB2D",
       "type": "color",
       "description": "haha color"
+    },
+    "newcc": {
+      "value": "#552727",
+      "type": "color"
     }
   },
   "opacity": {
@@ -595,5 +599,10 @@
     "value": 16,
     "type": "sizing",
     "description": "new size "
+  },
+  "newsize2": {
+    "value": 8,
+    "type": "sizing",
+    "description": "newsize add"
   }
 }
